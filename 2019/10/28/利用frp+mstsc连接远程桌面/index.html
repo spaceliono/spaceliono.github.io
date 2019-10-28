@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | space</title>
+  <title>利用frp+mstsc连接远程桌面 | space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="space">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="利用frp+mstsc连接远程桌面frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透(摘抄自官方介绍)。今天尝试使用 frp 在办公室 mstsc 远程在宿舍的电脑。根据网上的教程做的，记录下来，一是怕以后忘记了能在这里找回记忆，二是无聊找点事情做。 设备 一台具有公网IP的设备做为服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用frp+mstsc连接远程桌面">
+<meta property="og:url" content="http://yoursite.com/2019/10/28/利用frp+mstsc连接远程桌面/index.html">
 <meta property="og:site_name" content="space">
+<meta property="og:description" content="利用frp+mstsc连接远程桌面frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透(摘抄自官方介绍)。今天尝试使用 frp 在办公室 mstsc 远程在宿舍的电脑。根据网上的教程做的，记录下来，一是怕以后忘记了能在这里找回记忆，二是无聊找点事情做。 设备 一台具有公网IP的设备做为服务">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-28T12:55:19.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="space">
+<meta name="twitter:title" content="利用frp+mstsc连接远程桌面">
+<meta name="twitter:description" content="利用frp+mstsc连接远程桌面frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透(摘抄自官方介绍)。今天尝试使用 frp 在办公室 mstsc 远程在宿舍的电脑。根据网上的教程做的，记录下来，一是怕以后忘记了能在这里找回记忆，二是无聊找点事情做。 设备 一台具有公网IP的设备做为服务">
   
     <link rel="alternative" href="/atom.xml" title="space" type="application/atom+xml">
   
@@ -132,103 +136,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-利用frp+mstsc连接远程桌面" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      利用frp+mstsc连接远程桌面
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/28/利用frp+mstsc连接远程桌面/" class="archive-article-date">
+
+        
+        <a href="/2019/10/28/利用frp+mstsc连接远程桌面/" class="archive-article-date">
   	<time datetime="2019-10-28T12:52:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/28/利用frp+mstsc连接远程桌面/">利用frp+mstsc连接远程桌面</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="利用frp-mstsc连接远程桌面"><a href="#利用frp-mstsc连接远程桌面" class="headerlink" title="利用frp+mstsc连接远程桌面"></a>利用frp+mstsc连接远程桌面</h1><p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透(摘抄自官方介绍)。今天尝试使用 frp 在办公室 mstsc 远程在宿舍的电脑。根据网上的教程做的，记录下来，一是怕以后忘记了能在这里找回记忆，二是无聊找点事情做。</p>
+<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><ul>
+<li>一台具有公网IP的设备做为服务器端</li>
+<li>一台需要映射端口到公网的内网设备做为客户端</li>
+</ul>
+<h2 id="服务器端所需操作"><a href="#服务器端所需操作" class="headerlink" title="服务器端所需操作"></a>服务器端所需操作</h2><p>我用了腾讯云作为服务器端，84元，上星期刚买的。在<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp官网</a>下载文件并解压，修改其中的frps.ini文件</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_addr</span>=<span class="number">0.0</span>.<span class="number">0.0</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auto_token</span>=root</span><br><span class="line"></span><br><span class="line"><span class="attr">dashboard_port</span> = <span class="number">7500</span></span><br><span class="line"><span class="attr">dashboard_user</span> = admin</span><br><span class="line"><span class="attr">dashboard_pwd</span> = admin</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>其中 bind_port 为将要与客户端绑定的端口，dashboard_XXX为控制台设置。</p>
+<p>启动服务器端，在文件跟目录下输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<h2 id="启动方式科改为使用systemctl来控制"><a href="#启动方式科改为使用systemctl来控制" class="headerlink" title="启动方式科改为使用systemctl来控制"></a>启动方式科改为使用systemctl来控制</h2><p>创建文件<code>sudo vim /lib/systemd/system/frps.service</code>并修改为</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=fraps service</span><br><span class="line"><span class="attr">After</span>=network.target syslog.target</span><br><span class="line"><span class="attr">Wants</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="comment">#启动服务的命令（此处写你的frps的实际安装目录）</span></span><br><span class="line"><span class="attr">ExecStart</span>=/your/path/frps -c /your/path/frps.ini</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果要重启应用，可以输入，sudo systemctl restart frps</li>
+<li>如果要停止应用，可以输入，sudo systemctl stop frps</li>
+<li>如果要查看应用的日志，可以输入，sudo systemctl status frps</li>
+</ul>
+<p>在腾讯云的控制台开放所需的端口，我开放了TCP:7000-7500。</p>
+<p>服务器端启动后可以在浏览器输入 IP:7500，及刚才配置的用户名密码登录查看。</p>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><p>我使用的客户端为 win10 ,同样在官网下载windows版的文件，修改frpc.ini文件</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = (输入服务器端的IP)</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auto_token</span> = root</span><br><span class="line"></span><br><span class="line"><span class="section">[ssh]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">3389</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">3389</span>（远程端口）</span><br></pre></td></tr></table></figure>
+
+<p>修改后启动，在CMD输入<code>frpc.exe -c frpc.ini</code></p>
+<p>至此就完成了，在任意一台电脑上输入 <code>服务器端的IP:3389</code> 就可以远程客户端的电脑。遗憾的是，我宿舍电脑安装的盗版 win10 的 mstsc 服务有问题而远程不了。真是到头来，竹篮打水一场空。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/12/工作一年总结/" class="archive-article-date">
-  	<time datetime="2019-09-12T15:28:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/12/工作一年总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">工作一年总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/12/工作一年总结/">工作一年总结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/27/关于本博客/" class="archive-article-date">
-  	<time datetime="2019-08-27T13:54:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/27/关于本博客/">关于本博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -251,8 +262,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
