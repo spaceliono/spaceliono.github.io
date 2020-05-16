@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>space</title>
+  <title>sapcelion</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="space">
+<meta property="og:title" content="sapcelion">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="space">
+<meta property="og:site_name" content="sapcelion">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="space">
+<meta name="twitter:title" content="sapcelion">
   
-    <link rel="alternative" href="/atom.xml" title="space" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="sapcelion" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,10 +43,10 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/Spike.bmp" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">sapcelion</a></h1>
+		  <h1 class="header-author"><a href="/">wgz</a></h1>
 		</hgroup>
 		
 
@@ -91,10 +91,10 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/Spike.bmp" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">sapcelion</h1>
+			  <h1 class="header-author js-header-author">wgz</h1>
 			</hgroup>
 			
 			
@@ -134,6 +134,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Oracle数据库索引简单介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/Oracle数据库索引简单介绍/">Oracle数据库索引简单介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/Oracle数据库索引简单介绍/" class="archive-article-date">
+  	<time datetime="2020-05-15T15:01:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="按索引结构分类"><a href="#按索引结构分类" class="headerlink" title="按索引结构分类"></a>按索引结构分类</h2><p>oracle数据库索引分为两大类结构，B树索引，位图索引(bitmap)</p>
+<h2 id="1、B树索引"><a href="#1、B树索引" class="headerlink" title="1、B树索引"></a>1、B树索引</h2><p> 说明</p>
+<blockquote>
+<ul>
+<li>叶子节点（双向链表）包含该索引列的值和指向表中每个匹配行的ROWID值</li>
+<li>所有叶子节点具有相同的深度，因而不管查询条件怎样，查询速度基本相同</li>
+<li>能够适应精确查询， 部分能模糊查询和比较查询</li>
+</ul>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/05/15/Oracle数据库索引简单介绍/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/15/Oracle数据库索引简单介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring-Security简单配置介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -156,44 +229,9 @@
       
         <p>本文介绍的Spring Security，基于Springboot 2.2.x的 Spring Security 5.2.x版本</p>
 <h2 id="Spring-Security依赖设置"><a href="#Spring-Security依赖设置" class="headerlink" title="Spring Security依赖设置"></a>Spring Security依赖设置</h2><p>首先假设我们已经有了一个Spring Boot构建的web项目，再pom文件中加入</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>添加Security依赖后再启动项目，将会看到整个项目已经受到了Security的影响，需要登陆验证才能进入页面，这时的可以输入初始用户名：user, 密码随机生成在输出在IDE控制台中。</p>
-<h2 id="编写自己的Security配置"><a href="#编写自己的Security配置" class="headerlink" title="编写自己的Security配置"></a>编写自己的Security配置</h2><p>在编写Spring Security配置的时候，需要继承WebSecurityConfigurerAdapter类，主要做一下事情:</p>
-<blockquote>
-<ul>
-<li>配置全局安全:AuthenticationManagerBuilder创建AuthenticationManager(负责处理身份认证请求)，使用内存方式、JDBC、LDAP或者其他方式进行身份认证。</li>
-<li>基于web的安全性，HttpSecurity允许为特定的http请求配置，默认情况下，它将应用与所有的请求。根据请求的开头，设置不同的访问权限。</li>
-<li>设置自定义的登陆页面，并设置传过来的用户名和密码的参数。</li>
-<li>在用户访问请求，没有相应的权限，跳转到相应的页面。</li>
-<li>设置密码的编码格式。</li>
-<li>设置认证成功之后的跳转策略。</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configurable</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CustomAccessDeniedHandler customAccessDeniedHandler;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDetailsService userDetailsService;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(WebSecurity webSecurity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//不拦截静态资源,忽略的路径将不会获取CSRF令牌，故不能在此处写入含Post请求的路径</span></span><br><span class="line">        webSecurity.ignoring().antMatchers(</span><br><span class="line">                <span class="string">"/static/**"</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                .antMatchers(<span class="string">"/login"</span>,<span class="string">"/"</span>,<span class="string">"/article/**"</span>,<span class="string">"/about"</span>)<span class="comment">//不拦截登录相关方法</span></span><br><span class="line">                .permitAll()</span><br><span class="line">                <span class="comment">//.antMatchers("/user").hasRole("ADMIN")  // user接口只有ADMIN角色的可以访问</span></span><br><span class="line">                <span class="comment">//.anyRequest()</span></span><br><span class="line">                <span class="comment">//.authenticated()  // 任何尚未匹配的URL只需要验证用户即可访问</span></span><br><span class="line">                .anyRequest()</span><br><span class="line">                .access(<span class="string">"@rbacPermission.hasPermission(request, authentication)"</span>)<span class="comment">//根据账号权限访问</span></span><br><span class="line">                .and()</span><br><span class="line">                .formLogin()</span><br><span class="line">                .loginPage(<span class="string">"/login"</span>)   <span class="comment">//登录请求页</span></span><br><span class="line">                .loginProcessingUrl(<span class="string">"/login"</span>)  <span class="comment">//登录POST请求路径</span></span><br><span class="line">                .usernameParameter(<span class="string">"username"</span>) <span class="comment">//登录用户名参数</span></span><br><span class="line">                .passwordParameter(<span class="string">"password"</span>) <span class="comment">//登录密码参数</span></span><br><span class="line">                .defaultSuccessUrl(<span class="string">"/"</span>)   <span class="comment">//默认登录成功页面</span></span><br><span class="line">                .and()</span><br><span class="line">                .exceptionHandling()</span><br><span class="line">                .accessDeniedHandler(customAccessDeniedHandler) <span class="comment">//无权限处理器</span></span><br><span class="line">                .and()</span><br><span class="line">                .logout()</span><br><span class="line">                .logoutSuccessUrl(<span class="string">"/"</span>);  <span class="comment">//退出登录成功URL</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自定义获取用户信息接口</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 密码加密算法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BCryptPasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Spring Security5必须要对密码进行编码,这里选用BCryptPasswordEncoder加密法，验证过程</p>
-<blockquote>
-<p>用户登录时，密码匹配阶段并没有进行密码解密（因为密码经过Hash处理，是不可逆的），而是使用相同的算法把用户输入的密码进行hash处理，得到密码的hash值，然后将其与从数据库中查询到的密码hash值进行比较。如果两者相同，说明用户输入的密码正确。</p>
-</blockquote>
-<h2 id="配置用户访问页面的权限控制"><a href="#配置用户访问页面的权限控制" class="headerlink" title="配置用户访问页面的权限控制"></a>配置用户访问页面的权限控制</h2><p>在前面的WebSecurityConfig类中，用了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.access(&quot;@rbacPermission.hasPermission(request, authentication)&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>做用户访问页面的权限控制，现在就配置一个rbacPermission类,接受参数：请求路径，当前用户实例。将请求路径和当前用户实例所具有的权限路径进行匹配match，返回匹配成功与否的boolean值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"rbacPermission"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RbacPermission</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AntPathMatcher antPathMatcher = <span class="keyword">new</span> AntPathMatcher();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPermission</span><span class="params">(HttpServletRequest request, Authentication authentication)</span> </span>&#123;</span><br><span class="line">        Object principal = authentication.getPrincipal();</span><br><span class="line">        <span class="keyword">boolean</span> hasPermission = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (principal <span class="keyword">instanceof</span> UserEntity) &#123;</span><br><span class="line">            <span class="comment">// 读取用户所拥有的权限菜单</span></span><br><span class="line">            List&lt;Menu&gt; menus = ((UserEntity) principal).getRoleMenus();</span><br><span class="line">            <span class="keyword">for</span> (Menu menu : menus) &#123;</span><br><span class="line">                <span class="keyword">if</span> (antPathMatcher.match(menu.getMenuUrl(), request.getRequestURI())) &#123;</span><br><span class="line">                    hasPermission = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hasPermission;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="获取用户相关信息的类"><a href="#获取用户相关信息的类" class="headerlink" title="获取用户相关信息的类"></a>获取用户相关信息的类</h2><p>接下来再写一个继承与UserDetailsService的类，再交给前面的WebSecurityConfig类，用于获取用户相关信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDetailServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger log = LoggerFactory.getLogger(UserDetailServiceImpl.class);</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RoleMapper roleMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MenuMapper menuMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserEntity <span class="title">loadUserByUsername</span><span class="params">(String username)</span> <span class="keyword">throws</span> UsernameNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">// 根据用户名查找用户</span></span><br><span class="line">        UserEntity user = userMapper.getUserByUsername(username);</span><br><span class="line">        <span class="keyword">if</span> (user != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//根据用户id获取用户角色</span></span><br><span class="line">            List&lt;Role&gt; roles = roleMapper.getUserRoleByUserId(user.getId());</span><br><span class="line">            <span class="comment">// 填充权限</span></span><br><span class="line">            Collection&lt;SimpleGrantedAuthority&gt; authorities = <span class="keyword">new</span> HashSet&lt;SimpleGrantedAuthority&gt;();</span><br><span class="line">            <span class="keyword">for</span> (Role role : roles) &#123;</span><br><span class="line">                authorities.add(<span class="keyword">new</span> SimpleGrantedAuthority(role.getRoleName()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//填充权限菜单</span></span><br><span class="line">            List&lt;Menu&gt; menus=menuMapper.getRoleMenuByRoles(roles);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserEntity(username,user.getPassword(),authorities,menus);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(username +<span class="string">" not found"</span>);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(username +<span class="string">" not found"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在页面输入用户名、密码后，将由此类进行查询数据库，如果用户存在将获取相应的权限信息返回一个继承于UserDetails的UserEntity类，密码的验证前面已经设置由BCryptPasswordEncoder类控制。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="编写用户类"><a href="#编写用户类" class="headerlink" title="编写用户类"></a>编写用户类</h2><p>用户类本应该先于上面所有类前编写，这里是为了方便讲述才在最后写</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserEntity</span> <span class="keyword">implements</span> <span class="title">UserDetails</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">9005214545793249372L</span>;</span><br><span class="line">    <span class="keyword">private</span> Long id;<span class="comment">// 用户id</span></span><br><span class="line">    <span class="keyword">private</span> String username;<span class="comment">// 用户名</span></span><br><span class="line">    <span class="keyword">private</span> String password;<span class="comment">// 密码</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Role&gt; userRoles;<span class="comment">// 用户权限集合</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Menu&gt; roleMenus;<span class="comment">// 角色菜单集合</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    UserEntity();</span></span><br><span class="line"><span class="comment">    UserEntity(...);</span></span><br><span class="line"><span class="comment">    ... getter() and setter() ...</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Collection&lt;? extends GrantedAuthority&gt; getAuthorities() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.authorities;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAccountNonExpired</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAccountNonLocked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCredentialsNonExpired</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEnabled</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>还有一些从数据库获取用户数据的接口，这里就不一一搬上来了。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>经过上面的配置，Spring Security将会由我们设置的方法验证用户信息，拦截无权页面。</p>
-
+        
+          <a class="article-more-a" href="/2020/05/10/Spring-Security简单配置介绍/#more">more >></a>
+        
       
 
       
@@ -256,33 +294,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="利用frp-mstsc连接远程桌面"><a href="#利用frp-mstsc连接远程桌面" class="headerlink" title="利用frp+mstsc连接远程桌面"></a>利用frp+mstsc连接远程桌面</h1><p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透(摘抄自官方介绍)。今天尝试使用 frp 在办公室 mstsc 远程在宿舍的电脑。根据网上的教程做的，记录下来，一是怕以后忘记了能在这里找回记忆，二是无聊找点事情做。</p>
-<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><ul>
-<li>一台具有公网IP的设备做为服务器端</li>
-<li>一台需要映射端口到公网的内网设备做为客户端</li>
-</ul>
-<h2 id="服务器端所需操作"><a href="#服务器端所需操作" class="headerlink" title="服务器端所需操作"></a>服务器端所需操作</h2><p>我用了腾讯云作为服务器端，84元，上星期刚买的。在<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp官网</a>下载文件并解压，修改其中的frps.ini文件</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_addr</span>=<span class="number">0.0</span>.<span class="number">0.0</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auto_token</span>=root</span><br><span class="line"></span><br><span class="line"><span class="attr">dashboard_port</span> = <span class="number">7500</span></span><br><span class="line"><span class="attr">dashboard_user</span> = admin</span><br><span class="line"><span class="attr">dashboard_pwd</span> = admin</span><br></pre></td></tr></table></figure>
-
-<p>其中 bind_port 为将要与客户端绑定的端口，dashboard_XXX为控制台设置。</p>
-<p>启动服务器端，在文件跟目录下输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动方式科改为使用systemctl来控制"><a href="#启动方式科改为使用systemctl来控制" class="headerlink" title="启动方式科改为使用systemctl来控制"></a>启动方式科改为使用systemctl来控制</h2><p>创建文件<code>sudo vim /lib/systemd/system/frps.service</code>并修改为</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=fraps service</span><br><span class="line"><span class="attr">After</span>=network.target syslog.target</span><br><span class="line"><span class="attr">Wants</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="comment">#启动服务的命令（此处写你的frps的实际安装目录）</span></span><br><span class="line"><span class="attr">ExecStart</span>=/your/path/frps -c /your/path/frps.ini</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果要重启应用，可以输入，sudo systemctl restart frps</li>
-<li>如果要停止应用，可以输入，sudo systemctl stop frps</li>
-<li>如果要查看应用的日志，可以输入，sudo systemctl status frps</li>
-</ul>
-<p>在腾讯云的控制台开放所需的端口，我开放了TCP:7000-7500。</p>
-<p>服务器端启动后可以在浏览器输入 IP:7500，及刚才配置的用户名密码登录查看。</p>
-<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><p>我使用的客户端为 win10 ,同样在官网下载windows版的文件，修改frpc.ini文件</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = (输入服务器端的IP)</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auto_token</span> = root</span><br><span class="line"></span><br><span class="line"><span class="section">[ssh]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">3389</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">3389</span>（远程端口）</span><br></pre></td></tr></table></figure>
-
-<p>修改后启动，在CMD输入<code>frpc.exe -c frpc.ini</code></p>
-<p>至此就完成了，在任意一台电脑上输入 <code>服务器端的IP:3389</code> 就可以远程客户端的电脑。遗憾的是，我宿舍电脑安装的盗版 win10 的 mstsc 服务有问题而远程不了。真是到头来，竹篮打水一场空。</p>
-
+        
+          <a class="article-more-a" href="/2019/10/28/利用frp+mstsc连接远程桌面/#more">more >></a>
+        
       
 
       
@@ -345,22 +359,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在海陆通工作已有一年，感觉是时候总结一下这一年来学习的知识和生活的感悟。</p>
-<h2 id="知识"><a href="#知识" class="headerlink" title="知识"></a>知识</h2><p>入职前的我对ERP这类软件没有一点概念，大学里学的数据库也都还给了老师，唯一拿的出手的可能是PHP。我记得笔试的时候sql都是乱写，蔡明觉得我算是个可塑之才就给我一个试用机会，目前来说我自认为我没有辜负他的期望。</p>
-<ul>
-<li><p>刚入职就把《会计基础》这本书给啃了，算是对会计有了一定的认识。比如，借贷方，核销，冲销，折旧，对账等等这些会计术语的含义和用法。</p>
-</li>
-<li><p>又学习ORACLE EBS R12这个软件的工作原理。ERP软件，企业资源管理系统，像海陆通这个制造业就需要用信息化的计算机记录企业里生产相关的一切活动，从采购到生产到销售，进而引起的财务的应付、应收、成本、总账等等这类活动。关于这个ebs我还会一丁点oracle form开发（一种上个世纪的产物）。</p>
-</li>
-<li><p>Oracle数据库知识方面的知识，目前只掌握基础的sql(增删查改)，PL/SQL也有一点心得，不过这门面向过程的语言应用面较狭窄，可能只用于Oracle公司的自家产品里，优点是执行sql效率高，缺点的话一只手数不过来。数据库还有很多的知识需要学习，像写出高效的sql，数据库实现原理，数据库备份等等。</p>
-</li>
-</ul>
-<h2 id="生活中困惑"><a href="#生活中困惑" class="headerlink" title="生活中困惑"></a>生活中困惑</h2><p>回望过去一年，在处世的认知甚至比在专业技术上学到的认识还要贫瘠得多。工作上与他人的沟通严重缺乏技巧，阿公说的察言观色我自认为做到了8成。而“喜怒不露于形”这点我还差好远好远，如果我有天做到了这点，到那时我看起来还会是个真挚的人吗？</p>
-<p>还有一段都没能开始的失败关系，现在回顾，我似乎是被耍了，但此刻我心中没有怨恨，没有一丝波澜。我也确实不能有所留恋，这段本就不属于我的关系的消逝。</p>
-<p>今年真是懒惰得厉害，5点半下班就回宿舍躺到12点睡觉，又不学习也不锻炼身体，快要变成一条咸鱼。不记得在哪里看到这么一句话，努力和学习本来就是违背人的本性的。然而每当我睡觉的时候又会因为那一天没有努力学习或做某事而懊悔不已。矛盾和懒惰是不是人的天性？或只是我个人的天性？</p>
-<h2 id="接下来我想做的"><a href="#接下来我想做的" class="headerlink" title="接下来我想做的"></a>接下来我想做的</h2><p>工作闲下来的时候就特别渴望知识，害怕虚度光阴碌碌无为。但是真到学习的时候又无所适从，害怕发现自己其实不擅长干这个。也常常失去耐心，因为自制力不足、目标不明确而半途而费。</p>
-<p>目前在学习Spring，还想学Golang，数据库运维（Oracle）和Linux基本命令也要掌握，将来回头看看今日的目标能完成多少。</p>
-<p>总之，学会适当时要争取，寻找我的天命。</p>
-
+        
+          <a class="article-more-a" href="/2019/09/12/工作一年总结/#more">more >></a>
+        
       
 
       
@@ -422,14 +423,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&emsp;&emsp;这个博客由Hexo+GitHub Pages搭建成，网站主题也是直接用了yilia。我也是参考网上的手把手教程，花了2个晚上就搭好了，甚至一点代码基础都不需要，照着敲命令就对了。下面就记录一下搭建的时候遇到的一些小问题。  </p>
-<p>1.下载hexo-deployer-git这个npm包出错，是网络的造成的，我把npm的镜像完全设为了淘宝的镜像  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line">npm i -g express</span><br></pre></td></tr></table></figure>
-
-<p>注意，不推荐这样子，因为把npm的镜像完全设为了淘宝的镜像，万一我们有些依赖包只有npm原始镜像里面才有，而淘宝里面没有，那就悲剧了。npm原始的镜像地址：<a href="https://registry.npmjs.org/" target="_blank" rel="noopener">https://registry.npmjs.org/</a>  </p>
-<p>2.CMD克隆yilia主题出错，速度慢得厉害，最后我直接在网页下载项目再把它放到hexo/themes文件夹下，话说用git clone命令下载和网页下载是不一样的2种方式吗？  </p>
-<p>Markdown目前还不熟悉，写起文章来效率偏低。现在这个博客还有很多地方没有完善，一些链接都是无效的，其实我也不太需要某些链接，晚上看看代码，试试能不能个性化一下。</p>
-
+        <p>&emsp;&emsp;这个博客由Hexo+GitHub Pages搭建成，网站主题也是直接用了yilia。我也是参考网上的手把手教程，花了2个晚上就搭好了，甚至一点代码基础都不需要，照着敲命令就对了。下面就记录一下搭建的时候遇到的一些小问题。</p>
+        
+          <a class="article-more-a" href="/2019/08/27/关于本博客/#more">more >></a>
+        
       
 
       
@@ -481,7 +478,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 sapcelion
+    		&copy; 2020 wgz
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
