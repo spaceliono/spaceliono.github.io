@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/9 | sapcelion</title>
+  <title>Oracle数据库分析函数笔记 | sapcelion</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sapcelion">
-<meta property="og:url" content="http://yoursite.com/archives/2019/09/index.html">
+  <meta name="description" content="简要记录一下 Oralce数据库的分析函数使用方法，做 LeetCode 的时候常常碰到能使用分析函数就能轻松简单解决的题，而且使用分析函数往往占用更少的资源。 分析函数是 Oracle 专门用于解决复杂报表统计需求的功能强大的函数，它可以在数据中进行分组然后计算基于组的某种统计值，并且每一组的每一行都可以返回一个统计值。 分析函数带有一个开窗函数over()，包含三个分析子句:分组(partit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle数据库分析函数笔记">
+<meta property="og:url" content="http://yoursite.com/2020/05/30/Oracle数据库分析函数笔记/index.html">
 <meta property="og:site_name" content="sapcelion">
+<meta property="og:description" content="简要记录一下 Oralce数据库的分析函数使用方法，做 LeetCode 的时候常常碰到能使用分析函数就能轻松简单解决的题，而且使用分析函数往往占用更少的资源。 分析函数是 Oracle 专门用于解决复杂报表统计需求的功能强大的函数，它可以在数据中进行分组然后计算基于组的某种统计值，并且每一组的每一行都可以返回一个统计值。 分析函数带有一个开窗函数over()，包含三个分析子句:分组(partit">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-30T15:36:40.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sapcelion">
+<meta name="twitter:title" content="Oracle数据库分析函数笔记">
+<meta name="twitter:description" content="简要记录一下 Oralce数据库的分析函数使用方法，做 LeetCode 的时候常常碰到能使用分析函数就能轻松简单解决的题，而且使用分析函数往往占用更少的资源。 分析函数是 Oracle 专门用于解决复杂报表统计需求的功能强大的函数，它可以在数据中进行分组然后计算基于组的某种统计值，并且每一组的每一行都可以返回一个统计值。 分析函数带有一个开窗函数over()，包含三个分析子句:分组(partit">
   
     <link rel="alternative" href="/atom.xml" title="sapcelion" type="application/atom+xml">
   
@@ -132,49 +136,635 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Oracle数据库分析函数笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/12/工作一年总结/" class="archive-article-date">
-  	<time datetime="2019-09-12T15:28:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/12/工作一年总结/">工作一年总结</a>
+    <h1 class="article-title" itemprop="name">
+      Oracle数据库分析函数笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/05/30/Oracle数据库分析函数笔记/" class="archive-article-date">
+  	<time datetime="2020-05-30T15:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简要记录一下 Oralce数据库的分析函数使用方法，做 LeetCode 的时候常常碰到能使用分析函数就能轻松简单解决的题，而且使用分析函数往往占用更少的资源。</p>
+<p>分析函数是 Oracle 专门用于解决复杂报表统计需求的功能强大的函数，它可以在数据中进行分组然后计算基于组的某种统计值，并且每一组的每一行都可以返回一个统计值。</p>
+<p>分析函数带有一个开窗函数over()，包含三个分析子句:分组(partition by), 排序(order by), 窗口(rows,range) ，他们的使用形式如下：over(partition by xxx order by yyy rows between zzz)。</p>
+<a id="more"></a>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<h3 id="1、rank-dense-rank-row-number-排序"><a href="#1、rank-dense-rank-row-number-排序" class="headerlink" title="1、rank(), dense_rank(), row_number() 排序"></a>1、rank(), dense_rank(), row_number() 排序</h3><p>假设有表 emp ，结构如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">900</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+</tr>
+</tbody></table>
+<p>现在需求是根据 sal 进行排序按 deptno 进行分组</p>
+<p><strong>1、使用 rank() over()</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">    <span class="keyword">rank</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptno <span class="keyword">order</span> <span class="keyword">by</span> sal)</span><br><span class="line"><span class="keyword">from</span> EMP;</span><br></pre></td></tr></table></figure>
+
+<p>跳跃排序，如果有两个第一级别时，接下来是第三级别,输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">rank</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+<p><strong>2、使用 dense_rank() over()</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">    <span class="keyword">dense_rank</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptno <span class="keyword">order</span> <span class="keyword">by</span> sal)</span><br><span class="line"><span class="keyword">from</span> EMP;</span><br></pre></td></tr></table></figure>
+
+<p>连续排序，如果有两个第一级别时，接下来是第二级别</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">dense_rank</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+<p><strong>3、使用 row_number() over()</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">    row_number() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptno <span class="keyword">order</span> <span class="keyword">by</span> sal)</span><br><span class="line"><span class="keyword">from</span> EMP;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">row_number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+<h3 id="2、lead-lag-over-partition-by-…-order-by-…-取前面-后面第n行记录"><a href="#2、lead-lag-over-partition-by-…-order-by-…-取前面-后面第n行记录" class="headerlink" title="2、lead()/lag() over(partition by … order by …) 取前面/后面第n行记录"></a>2、lead()/lag() over(partition by … order by …) 取前面/后面第n行记录</h3><p>lead(列名,n,m): 当前记录后面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录后面第一行的记录&lt;列名&gt;的值，没有则默认值为null。</p>
+<p>lag(列名,n,m): 当前记录前面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录前面第一行的记录&lt;列名&gt;的值，没有则默认值为null。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">    <span class="keyword">lead</span>(sal,<span class="number">1</span>,<span class="number">0</span>) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptno <span class="keyword">order</span> <span class="keyword">by</span> sal)</span><br><span class="line"><span class="keyword">from</span> EMP;</span><br></pre></td></tr></table></figure>
+
+<p>lead() 输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">lead</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1500</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">900</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">    lag(sal,<span class="number">1</span>,<span class="number">0</span>) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptno <span class="keyword">order</span> <span class="keyword">by</span> sal)</span><br><span class="line"><span class="keyword">from</span> EMP;</span><br></pre></td></tr></table></figure>
+
+<p>lag() 输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">lag</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">800</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">900</td>
+</tr>
+</tbody></table>
+<h3 id="3、sum-avg-count"><a href="#3、sum-avg-count" class="headerlink" title="3、sum(),avg(),count()"></a>3、sum(),avg(),count()</h3><p>聚合函数后加 over(partition by ···) 与 over(partition by ··· order by ···) 有区别</p>
+<p>sum(sal) over(partition by deptno) 显然是会根据 deptno 进行分组相加，每行输出总和的数值。</p>
+<p>sum(sal) over(partition by deptno order by id) 则会先根据 deptno 进行分组，每行输出第一行到本行的总和。如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">    <span class="keyword">sum</span>(sal) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptno <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span>)</span><br><span class="line"><span class="keyword">from</span> EMP;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">sum</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">3500</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">800</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">1700</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">2700</td>
+</tr>
+</tbody></table>
+<p>avg() 和 count() 后加 over() 结果和 sum() 相似。</p>
+<h3 id="4、FIRST-VALUE-LAST-VALUE"><a href="#4、FIRST-VALUE-LAST-VALUE" class="headerlink" title="4、FIRST_VALUE() , LAST_VALUE()"></a>4、FIRST_VALUE() , LAST_VALUE()</h3><p>故名思意，FIRST_VALUE() 取第一行的值，LAST_VALUE() 取最后一行的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">       <span class="keyword">FIRST_VALUE</span>(sal <span class="keyword">IGNORE</span> <span class="keyword">NULLS</span>) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal <span class="keyword">ASC</span> <span class="keyword">NULLS</span> <span class="keyword">LAST</span>)</span><br><span class="line"><span class="keyword">FROM</span>   emp;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">FIRST_VALUE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">800</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">800</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">800</td>
+</tr>
+</tbody></table>
+<p>IGNORE NULLS 意为忽略空值。</p>
+<p>NULLS LAST 意为空值放在最后，ASC 默认 NULLS LAST ， DESC 默认 NULLS FIRST.</p>
+<h3 id="5、windowing-clause-语句：RANGE，ROWS"><a href="#5、windowing-clause-语句：RANGE，ROWS" class="headerlink" title="5、windowing_clause 语句：RANGE，ROWS"></a>5、windowing_clause 语句：RANGE，ROWS</h3><p>windowing_clause 语句,只有 order by 被使用时可以启用改语句，语句用法：</p>
+<ul>
+<li>RANGE BETWEEN start_point AND end_point</li>
+<li>ROWS BETWEEN start_point AND end_point</li>
+</ul>
+<p>start_point，end_point 的值（懒得翻译了，直接搬运）</p>
+<ul>
+<li>UNBOUNDED PRECEDING : The window starts at the first row of the partition, or the whole result set if no partitioning clause is used. Only available for start points.</li>
+<li>UNBOUNDED FOLLOWING : The window ends at the last row of the partition, or the whole result set if no partitioning clause is used. Only available for end points.</li>
+<li>CURRENT ROW : The window starts or ends at the current row. Can be used as start or end point.</li>
+<li>value_expr PRECEDING : A physical or logical offset before the current row using a constant or expression that evaluates to a positive numerical value. When used with RANGE, it can also be an interval literal if the order_by_clause uses a DATE column.</li>
+<li>value_expr FOLLOWING : As above, but an offset after the current row.</li>
+</ul>
+<p>over(order by ) 函数不写range，rows 时，默认是 RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW,这我们就很好理解上面 sum(sal) over(partition by deptno order by id) 的输出了。</p>
+<p>RANGE，ROWS 的不同之处。</p>
+<ul>
+<li>对于sum(sal) over (order by sal) 语句，RANGE 会把与当前行 sal 值相同的行当做当前行（CURRENT ROW）一起计算，即使相同的行是在后面。</li>
+<li>ROWS 则不会对与当前行 sal 值相同的行做处理。</li>
+<li>类似于 sum(sal) over (order by id) 这种，函数处理的值和 order_by 子句的值不相同，也不会对与当前行 sal 值相同的行做处理。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">       <span class="keyword">sum</span>(sal) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal</span><br><span class="line">                      <span class="keyword">RANGE</span> <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>),</span><br><span class="line">       <span class="keyword">sum</span>(sal) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal</span><br><span class="line">                      <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>)</span><br><span class="line"><span class="keyword">FROM</span>   emp;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">sal</th>
+<th align="center">deptno</th>
+<th align="center">SUM_RANGE</th>
+<th align="center">SUM_ROWS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Rose</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">2000</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chandler</td>
+<td align="center">1000</td>
+<td align="center">1</td>
+<td align="center">2000</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Joey</td>
+<td align="center">1500</td>
+<td align="center">1</td>
+<td align="center">3500</td>
+<td align="center">3500</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Rachel</td>
+<td align="center">800</td>
+<td align="center">2</td>
+<td align="center">800</td>
+<td align="center">800</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Monica</td>
+<td align="center">900</td>
+<td align="center">2</td>
+<td align="center">1700</td>
+<td align="center">1700</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Phoebe</td>
+<td align="center">1000</td>
+<td align="center">2</td>
+<td align="center">2700</td>
+<td align="center">2700</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--该SQL输出与前面lag,lead大致相同，前一行到当前行开窗取FIRST_VALUE，当前行到后一行开窗取LAST_VALUE</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,sal,deptno,</span><br><span class="line">       <span class="keyword">FIRST_VALUE</span>(sal) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal</span><br><span class="line">                      <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>),</span><br><span class="line">       <span class="keyword">LAST_VALUE</span>(sal) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal</span><br><span class="line">                      <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span> <span class="keyword">AND</span> <span class="number">1</span> <span class="keyword">FOLLOWING</span>)</span><br><span class="line"><span class="keyword">FROM</span>   emp;</span><br></pre></td></tr></table></figure>
+
+<p>参考网站：<a href="https://oracle-base.com/articles/misc/analytic-functions" target="_blank" rel="noopener">https://oracle-base.com/articles/misc/analytic-functions</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/05/30/《牧羊少年奇妙之旅》读后/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          《牧羊少年奇妙之旅》读后
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/05/15/Oracle数据库索引简单介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Oracle数据库索引简单介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -197,8 +787,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
